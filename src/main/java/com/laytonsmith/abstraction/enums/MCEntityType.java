@@ -80,16 +80,12 @@ public enum MCEntityType {
 	MINECART_HOPPER(true),
 	MINECART_MOB_SPAWNER(true),
 	MINECART_COMMAND(false),
-	ARMOR_STAND(true),
-	ENDERMITE(true),
-	GUARDIAN(true),
-	RABBIT(true),
 	/**
 	 * An unknown entity without an Entity Class
 	 */
 	UNKNOWN(false);
 	
-	private final boolean apiCanSpawn;
+	private boolean apiCanSpawn;
 	
 	/**
 	 * 
