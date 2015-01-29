@@ -39,7 +39,6 @@ import com.laytonsmith.abstraction.bukkit.entities.BukkitMCEnderman;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCEntityProjectileSource;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCFirework;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCFishHook;
-import com.laytonsmith.abstraction.bukkit.entities.BukkitMCGuardian;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCHorse;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCIronGolem;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCItemFrame;
@@ -113,7 +112,6 @@ import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Fish;
-import org.bukkit.entity.Guardian;
 import org.bukkit.entity.Hanging;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.HumanEntity;
@@ -435,10 +433,6 @@ public class BukkitConvertor extends AbstractConvertor {
 
 		if (be instanceof Zombie) {
 			return new BukkitMCZombie((Zombie) be);
-		}
-
-		if (be instanceof Guardian) {
-			return new BukkitMCGuardian((Guardian) be);
 		}
 
 		// Block entities
