@@ -9,7 +9,6 @@ import com.laytonsmith.abstraction.MCLivingEntity;
 import com.laytonsmith.abstraction.MCLocation;
 import com.laytonsmith.abstraction.MCPlayer;
 import com.laytonsmith.abstraction.MCProjectile;
-import com.laytonsmith.abstraction.MVector3D;
 import com.laytonsmith.abstraction.blocks.MCBlock;
 import com.laytonsmith.abstraction.blocks.MCMaterial;
 import com.laytonsmith.abstraction.bukkit.BukkitConvertor;
@@ -45,7 +44,6 @@ import com.laytonsmith.abstraction.events.MCHangingBreakEvent;
 import com.laytonsmith.abstraction.events.MCItemDespawnEvent;
 import com.laytonsmith.abstraction.events.MCItemSpawnEvent;
 import com.laytonsmith.abstraction.events.MCPlayerDropItemEvent;
-import com.laytonsmith.abstraction.events.MCPlayerInteractAtEntityEvent;
 import com.laytonsmith.abstraction.events.MCPlayerInteractEntityEvent;
 import com.laytonsmith.abstraction.events.MCPlayerPickupItemEvent;
 import com.laytonsmith.abstraction.events.MCPotionSplashEvent;
@@ -77,11 +75,9 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.Vector;
 
 /**
  *
@@ -367,7 +363,7 @@ public class BukkitEntityEvents {
 		}
 		
 	}
-
+	
 	@abstraction(type = Implementation.Type.BUKKIT)
 	public static class BukkitMCPlayerInteractEntityEvent implements MCPlayerInteractEntityEvent {
 
@@ -375,7 +371,7 @@ public class BukkitEntityEvents {
 		public BukkitMCPlayerInteractEntityEvent(PlayerInteractEntityEvent event) {
 			this.e = event;
 		}
-
+		
 		@Override
 		public Object _GetObject() {
 			return e;
@@ -400,22 +396,7 @@ public class BukkitEntityEvents {
 		public MCPlayer getPlayer() {
 			return new BukkitMCPlayer(e.getPlayer());
 		}
-	}
-	
-	@abstraction(type = Implementation.Type.BUKKIT)
-	public static class BukkitMCPlayerInteractAtEntityEvent extends BukkitMCPlayerInteractEntityEvent implements MCPlayerInteractAtEntityEvent {
-
-		PlayerInteractAtEntityEvent e;
-		public BukkitMCPlayerInteractAtEntityEvent(PlayerInteractAtEntityEvent event) {
-			super(event);
-			this.e = event;
-		}
-
-		@Override
-		public MVector3D getClickedPosition() {
-			Vector v = e.getClickedPosition();
-			return new MVector3D(v.getX(), v.getY(), v.getZ());
-		}
+		
 	}
 	
     @abstraction(type = Implementation.Type.BUKKIT)
