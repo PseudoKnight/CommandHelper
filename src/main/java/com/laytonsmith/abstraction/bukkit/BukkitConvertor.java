@@ -97,7 +97,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Ageable;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Boat;
 import org.bukkit.entity.ComplexEntityPart;
@@ -508,10 +507,6 @@ public class BukkitConvertor extends AbstractConvertor {
 
 		if (be instanceof Hanging) {
 			return new BukkitMCHanging(be);
-		}
-
-		if (be instanceof ArmorStand) {
-			return new BukkitMCArmorStand((ArmorStand) be);
 		}
 
 		// Vehicles

@@ -5,7 +5,7 @@ import com.laytonsmith.abstraction.MCLivingEntity;
 import com.laytonsmith.abstraction.MCLocation;
 import com.laytonsmith.abstraction.MCServer;
 import com.laytonsmith.abstraction.MCWorld;
-import com.laytonsmith.abstraction.MVector3D;
+import com.laytonsmith.abstraction.Velocity;
 import com.laytonsmith.abstraction.bukkit.events.BukkitEntityEvents;
 import com.laytonsmith.abstraction.enums.MCDamageCause;
 import com.laytonsmith.abstraction.enums.MCEntityEffect;
@@ -142,13 +142,13 @@ public class BukkitMCEntity extends BukkitMCMetadatable implements MCEntity {
 
 	@Override
 	public MCEntity getVehicle() {
-		return BukkitConvertor.BukkitGetCorrectEntity(e.getVehicle());
+		return new BukkitMCEntity(e);
 	}
 
 	@Override
-	public MVector3D getVelocity() {
+	public Velocity getVelocity() {
 		Vector v = e.getVelocity();
-		return new MVector3D(v.getX(), v.getY(), v.getZ());
+		return new Velocity(v.length(), v.getX(), v.getY(), v.getZ());
 	}
 
 	@Override
@@ -228,7 +228,7 @@ public class BukkitMCEntity extends BukkitMCMetadatable implements MCEntity {
 	}
 
 	@Override
-	public void setVelocity(MVector3D velocity) {
+	public void setVelocity(Velocity velocity) {
 		Vector v = new Vector(velocity.x, velocity.y, velocity.z);
 		e.setVelocity(v);
 	}

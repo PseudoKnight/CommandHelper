@@ -51,9 +51,9 @@ public interface MCEntity extends MCMetadatable {
 
 	public MCEntity getVehicle();
 
-	public MVector3D getVelocity();
-
-	public void setVelocity(MVector3D v);
+	public Velocity getVelocity();
+	
+	public void setVelocity(Velocity v);
 
 	public MCWorld getWorld();
 

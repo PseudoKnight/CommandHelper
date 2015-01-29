@@ -305,9 +305,6 @@ public class BukkitMCLivingEntity extends BukkitMCEntityProjectileSource impleme
 
 	@Override
 	public MCEntityEquipment getEquipment() {
-		if (le.getEquipment() == null) {
-			return null;
-		}
 		return new BukkitMCEntityEquipment(le.getEquipment());
 	}
 	

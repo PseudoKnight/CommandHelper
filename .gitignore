@@ -1,13 +1,11 @@
 /target/
 /.settings/
-/.idea/
 /plugins/
 /com/
 /CommandHelper/
 /bin/
 .classpath
 .project
-*.iml
 nbactions-provisional-build.xml
 nbactions-release-profile.xml
 nbactions.xml

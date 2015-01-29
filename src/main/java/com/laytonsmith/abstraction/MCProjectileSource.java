@@ -9,6 +9,5 @@ import com.laytonsmith.abstraction.enums.MCProjectileType;
 public interface MCProjectileSource extends AbstractionObject {
 	
 	public MCProjectile launchProjectile(MCProjectileType projectile);
-
-	public MCProjectile launchProjectile(MCProjectileType projectile, MVector3D init);
+	public MCProjectile launchProjectile(MCProjectileType projectile, Velocity init);
 }

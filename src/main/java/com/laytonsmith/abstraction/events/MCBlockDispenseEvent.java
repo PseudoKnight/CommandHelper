@@ -1,7 +1,7 @@
 package com.laytonsmith.abstraction.events;
 
 import com.laytonsmith.abstraction.MCItemStack;
-import com.laytonsmith.abstraction.MVector3D;
+import com.laytonsmith.abstraction.Velocity;
 
 /**
  *
@@ -13,9 +13,9 @@ public interface MCBlockDispenseEvent extends MCBlockEvent {
 
 	public void setItem(MCItemStack item);
 
-	public MVector3D getVelocity();
+	public Velocity getVelocity();
 
-	public void setVelocity(MVector3D vel);
+	public void setVelocity(Velocity vel);
 
 	public boolean isCancelled();
 
