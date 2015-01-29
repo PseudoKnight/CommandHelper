@@ -853,7 +853,7 @@ public class EntityEvents {
 
 				return map;
 			} else {
-				throw new EventException("Cannot convert e to MCPlayerInteractEntityEvent");
+				throw new EventException("Cannot convert e to MCPlayerDropItemEvent");
 			}
 		}
 
@@ -935,7 +935,7 @@ public class EntityEvents {
 
 				return map;
 			} else {
-				throw new EventException("Cannot convert e to MCPlayerInteractAtEntityEvent");
+				throw new EventException("Cannot convert e to MCPlayerDropItemEvent");
 			}
 		}
 
