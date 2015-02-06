@@ -24,7 +24,7 @@ import com.laytonsmith.abstraction.MCProjectileSource;
 import com.laytonsmith.abstraction.MCTNT;
 import com.laytonsmith.abstraction.MCWorld;
 import com.laytonsmith.abstraction.StaticLayer;
-import com.laytonsmith.abstraction.Velocity;
+import com.laytonsmith.abstraction.MVector3D;
 import com.laytonsmith.abstraction.blocks.MCBlock;
 import com.laytonsmith.abstraction.blocks.MCBlockFace;
 import com.laytonsmith.abstraction.blocks.MCBlockProjectileSource;
@@ -380,7 +380,8 @@ public class EntityManagement {
 				Construct... args) throws ConfigRuntimeException {
 
 			MCEntity e = Static.getEntity(Static.getInt32(args[0], t), t);
-			CArray va = ObjectGenerator.GetGenerator().velocity(e.getVelocity(), t);
+			CArray va = ObjectGenerator.GetGenerator().vector(e.getVelocity(), t);
+			va.set("magnitude", new CDouble(e.getVelocity().length(), t), t);
 			return va;
 		}
 
@@ -413,7 +414,7 @@ public class EntityManagement {
 				Construct... args) throws ConfigRuntimeException {
 
 			MCEntity e = Static.getEntity(Static.getInt32(args[0], t), t);
-			e.setVelocity(ObjectGenerator.GetGenerator().velocity(args[1], t));
+			e.setVelocity(ObjectGenerator.GetGenerator().vector(args[1], t));
 			return CVoid.VOID;
 		}
 
@@ -927,7 +928,7 @@ public class EntityManagement {
 
 				return new CInt(projectile.getEntityId(), t);
 			} else {
-				Velocity velocity = to.toVector().subtract(from.toVector()).normalize();
+				MVector3D velocity = to.toVector().subtract(from.toVector()).normalize();
 
 				if (shooter_id > 0) {
 					shifted_from = from.add(velocity);
@@ -2324,7 +2325,7 @@ public class EntityManagement {
 				case FIREBALL:
 				case SMALL_FIREBALL:
 					MCFireball ball = (MCFireball) entity;
-					specArray.set(entity_spec.KEY_FIREBALL_DIRECTION, ObjectGenerator.GetGenerator().velocity(ball.getDirection(), t), t);
+					specArray.set(entity_spec.KEY_FIREBALL_DIRECTION, ObjectGenerator.GetGenerator().vector(ball.getDirection(), t), t);
 					break;
 				case FISHING_HOOK:
 					MCFishHook hook = (MCFishHook) entity;
@@ -2425,7 +2426,7 @@ public class EntityManagement {
 				case WITHER_SKULL:
 					MCWitherSkull skull = (MCWitherSkull) entity;
 					specArray.set(entity_spec.KEY_WITHER_SKULL_CHARGED, CBoolean.get(skull.isCharged()), t);
-					specArray.set(entity_spec.KEY_FIREBALL_DIRECTION, ObjectGenerator.GetGenerator().velocity(skull.getDirection(), t), t);
+					specArray.set(entity_spec.KEY_FIREBALL_DIRECTION, ObjectGenerator.GetGenerator().vector(skull.getDirection(), t), t);
 					break;
 				case WOLF:
 					MCWolf wolf = (MCWolf) entity;
@@ -2613,7 +2614,7 @@ public class EntityManagement {
 					for (String index : specArray.stringKeySet()) {
 						switch (index.toLowerCase()) {
 							case entity_spec.KEY_FIREBALL_DIRECTION:
-								ball.setDirection(ObjectGenerator.GetGenerator().velocity(specArray.get(index, t), t));
+								ball.setDirection(ObjectGenerator.GetGenerator().vector(specArray.get(index, t), t));
 								break;
 							default:
 								throwException(index, t);
@@ -2930,7 +2931,7 @@ public class EntityManagement {
 								skull.setCharged(Static.getBoolean(specArray.get(index, t)));
 								break;
 							case entity_spec.KEY_FIREBALL_DIRECTION:
-								skull.setDirection(ObjectGenerator.GetGenerator().velocity(specArray.get(index, t), t));
+								skull.setDirection(ObjectGenerator.GetGenerator().vector(specArray.get(index, t), t));
 								break;
 							default:
 								throwException(index, t);
