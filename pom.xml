@@ -176,7 +176,7 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.6.4-R0.1-SNAPSHOT</version>
+			<version>1.6.4-R1.0</version>
 		</dependency>      
         
 		<!-- WorldGuard for some of the sk functions -->
